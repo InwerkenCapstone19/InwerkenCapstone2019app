@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { DiscoverComponent } from './discover/discover.component';
 import { ServiceComponent } from './service/service.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { SensorTypeSelectorComponent } from './sensor-type-selector/sensor-type-selector.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     HomeComponent,
     DiscoverComponent,
     ServiceComponent,
-    NavBarComponent
+    NavBarComponent,
+    SensorTypeSelectorComponent
   ],
   imports: [
     BrowserModule,
