@@ -4,9 +4,10 @@ import {HomeComponent} from './home/home.component';
 import {DiscoverComponent} from './discover/discover.component';
 import {AnalyticsComponent} from './analytics/analytics.component'
 const routes: Routes = [
-	{path: '', component:HomeComponent },
-	{path: '/discover', component:DiscoverComponent},
-	{path: '/analytics', component:AnalyticsComponent}
+	{path: 'home', component:HomeComponent},
+	{path: '',redirectTo: '/home', pathMatch: 'full' },
+	{path: 'discover', component:DiscoverComponent},
+	{path: 'analytics', component:AnalyticsComponent}
  ];
 
 
