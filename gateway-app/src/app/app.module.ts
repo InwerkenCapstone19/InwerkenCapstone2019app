@@ -7,6 +7,7 @@ import { AnalyticsComponent } from './analytics/analytics.component';
 import { HomeComponent } from './home/home.component';
 import { DiscoverComponent } from './discover/discover.component';
 import { ServiceComponent } from './service/service.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ServiceComponent } from './service/service.component';
     AnalyticsComponent,
     HomeComponent,
     DiscoverComponent,
-    ServiceComponent
+    ServiceComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
