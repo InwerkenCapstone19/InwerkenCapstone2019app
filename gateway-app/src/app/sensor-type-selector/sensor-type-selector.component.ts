@@ -12,4 +12,13 @@ export class SensorTypeSelectorComponent implements OnInit {
   ngOnInit() {
   }
 
+  getKanban() :void{
+
+  }
+  getHumidity() :void{
+  	
+  }
+  getTemperature() :void{
+  	
+  }   
 }
