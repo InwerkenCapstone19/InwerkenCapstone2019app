@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SensorTypeSelectorComponent} from '../sensor-type-selector/sensor-type-selector.component';
+
 
 @Component({
   selector: 'app-analytics',
