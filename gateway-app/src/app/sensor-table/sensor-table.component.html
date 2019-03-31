@@ -1,3 +1,26 @@
-<p>
-  sensor-table works!
-</p>
+<mat-table class="sensor-table" [dataSource]="dataSource">
+  
+    <ng-container matColumnDef="sensID">
+        <div *matHeaderCellDef>#</div>
+        <div *matCellDef="let sensor">{{sensor.ID}}</div>
+    </ng-container>
+  
+    <ng-container matColumnDef="name">
+        <div *matHeaderCellDef>Sensor Name</div>
+        <div class="name-cell"
+                  *matCellDef="let sensor">{{sensor.name}}</div>
+    </ng-container>
+  
+    <ng-container matColumnDef="reading">
+        <div *matHeaderCellDef>Last Reading</div>
+        <div class="reading-cell"
+                  *matCellDef="let sensor">{{sensor.lastReading}}</div>
+    </ng-container>
+    
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    
+ 
+    <mat-row *matRowDef="let row; columns: displayedColumns"
+    	(click)="onRowClicked(row)"></mat-row>
+    
+</mat-table>

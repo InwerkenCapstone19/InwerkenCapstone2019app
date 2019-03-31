@@ -15,6 +15,9 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SensorTypeSelectorComponent } from './sensor-type-selector/sensor-type-selector.component';
 import { SensorTableComponent } from './sensor-table/sensor-table.component';
 
+import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, 
+         MatSortModule, MatTableModule } from '@angular/material';
+
 @NgModule({
   declarations: [
     AppComponent,
