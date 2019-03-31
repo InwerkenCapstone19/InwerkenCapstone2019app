@@ -13,6 +13,10 @@ import { SettingsComponent } from './settings/settings.component';
 
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SensorTypeSelectorComponent } from './sensor-type-selector/sensor-type-selector.component';
+import { SensorTableComponent } from './sensor-table/sensor-table.component';
+
+import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, 
+         MatSortModule, MatTableModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,8 @@ import { SensorTypeSelectorComponent } from './sensor-type-selector/sensor-type-
     ServiceComponent,
     SettingsComponent,
     NavBarComponent,
-    SensorTypeSelectorComponent
+    SensorTypeSelectorComponent,
+    SensorTableComponent
   ],
   imports: [
     BrowserModule,
