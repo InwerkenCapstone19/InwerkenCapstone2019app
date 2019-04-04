@@ -1,20 +1,21 @@
-<mat-table class="sensor-table" [dataSource]="dataSource">
+
+<mat-table class="sensor-table">
   
     <ng-container matColumnDef="sensID">
         <div *matHeaderCellDef>#</div>
-        <div *matCellDef="let sensor">{{sensor.ID}}</div>
+        <div *matCellDef="let sensor">{{tableInfo[0].ID}}</div>
     </ng-container>
   
     <ng-container matColumnDef="name">
         <div *matHeaderCellDef>Sensor Name</div>
         <div class="name-cell"
-                  *matCellDef="let sensor">{{sensor.name}}</div>
+                  *matCellDef="let sensor">{{tableInfo[0].name}}</div>
     </ng-container>
   
     <ng-container matColumnDef="reading">
         <div *matHeaderCellDef>Last Reading</div>
         <div class="reading-cell"
-                  *matCellDef="let sensor">{{sensor.lastReading}}</div>
+                  *matCellDef="let sensor">{{tableInfo[1]}}</div>
     </ng-container>
     
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -24,3 +25,6 @@
     	(click)="onRowClicked(row)"></mat-row>
     
 </mat-table>
+
+<p>SENSORS {{tableInfo.sensors|json}}</p>
+<p>READINGS {{tableInfo.readings|json}}</p>
