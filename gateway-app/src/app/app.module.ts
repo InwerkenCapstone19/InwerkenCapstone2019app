@@ -10,13 +10,14 @@ import { DiscoverComponent } from './discover/discover.component';
 import { AssignmentComponent } from './assignment/assignment.component'
 import { ServiceComponent } from './service/service.component';
 import { SettingsComponent } from './settings/settings.component';
-
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SensorTypeSelectorComponent } from './sensor-type-selector/sensor-type-selector.component';
 import { SensorTableComponent } from './sensor-table/sensor-table.component';
 
 import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, 
          MatSortModule, MatTableModule } from '@angular/material';
+
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,11 +30,18 @@ import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
     SettingsComponent,
     NavBarComponent,
     SensorTypeSelectorComponent,
-    SensorTableComponent
+    SensorTableComponent,
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatInputModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
+    MatSortModule,
+    MatTableModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
