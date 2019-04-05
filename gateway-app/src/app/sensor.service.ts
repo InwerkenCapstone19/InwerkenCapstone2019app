@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Sensor } from './sensor.model'
+
+import { Sensor } from './sensor.model';
+import { DataReadingService } from './data-reading.service';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -8,10 +11,10 @@ import { Sensor } from './sensor.model'
 })
 export class SensorService {
 
-  constructor(private _http:HttpClient) { }
+  constructor(private _http:HttpClient, private dataServ:DataReadingService) { }
 
-  public getSensors(sensorId:number=null,unitName:string=null){
- 	let _url = 'https://172.103.0.2/red/sensors'
+  private _requestSensors(sensorId:number=null,unitName:string=null){
+ 	 let _url = 'https://172.103.0.2/red/sensors'
 
    //if at least one parameter is passed
    if(sensorId !== null || unitName !== null ){
@@ -32,5 +35,23 @@ export class SensorService {
    else{
      return this._http.get<Sensor[]>(_url);
    }
+  }
+  private _fillSensors(sensors:Observable<Sensor[]>){
+    //array to be returned of sensors
+    let sensorArray:Array<Sensor>;
+
+    //subscribe to observable to fire get request
+    sensors.subscribe(res =>sensorArray);
+
+    //for each sensor use DataReadingService to issue a get request specific to that sensor
+    //and store the results in the senor.dataReadings array
+    for (var sensor of sensorArray) {
+      this.dataServ.getDataReadings(sensor.dataType,sensor.sensorId).subscribe(res => sensor.dataReadings);
+    }
+    return sensorArray;
+  }
+
+  public getSensors(){
+    return this._fillSensors(this._requestSensors());
   }
 }
