@@ -1,30 +1,33 @@
+<table *ngIf="dataSource" style="width:50%">
+  <tr>
+    <th style="text-align: left">Name</th>
+    <th style="text-align: left">Alias</th> 
+    <th style="text-align: left">Last Reading</th>
+  </tr>
+  <tr *ngFor="let sensor of sensorArray">
+    <td>{{sensor.unitName}}</td>
+    <td>{{sensor.alias || null}}</td> 
+    <td>{{sensor.dataReadings[0].value}}</td>
+  </tr>
+</table>
 
-<mat-table class="sensor-table">
-  
-    <ng-container matColumnDef="sensID">
-        <div *matHeaderCellDef>#</div>
-        <div *matCellDef="let sensor">{{tableInfo[0].ID}}</div>
-    </ng-container>
-  
+<div>
+  <mat-table [dataSource]="dataSource.filteredData">
     <ng-container matColumnDef="name">
-        <div *matHeaderCellDef>Sensor Name</div>
-        <div class="name-cell"
-                  *matCellDef="let sensor">{{tableInfo[0].name}}</div>
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let sensor"> {{sensor.sensorId}} </mat-cell>
     </ng-container>
-  
-    <ng-container matColumnDef="reading">
-        <div *matHeaderCellDef>Last Reading</div>
-        <div class="reading-cell"
-                  *matCellDef="let sensor">{{tableInfo[1]}}</div>
+    <ng-container matColumnDef="alias">
+      <mat-header-cell *matHeaderCellDef> Alias </mat-header-cell>
+      <mat-cell *matCellDef="let sensor"> {{sensor.alias}} </mat-cell>
     </ng-container>
-    
+    <ng-container matColumnDef="lastReading">
+      <mat-header-cell *matHeaderCellDef> Last Reading </mat-header-cell>
+      <mat-cell *matCellDef="let sensor"> {{sensor.dataReading[0]}} </mat-cell>
+    </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    
- 
-    <mat-row *matRowDef="let row; columns: displayedColumns"
-    	(click)="onRowClicked(row)"></mat-row>
-    
-</mat-table>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
 
-<p>SENSORS {{tableInfo.sensors|json}}</p>
-<p>READINGS {{tableInfo.readings|json}}</p>
+<p>test to seee if sensor service is working {{sensorArray|json}}</p>

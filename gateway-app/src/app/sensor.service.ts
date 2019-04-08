@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 
 import { Sensor } from './sensor.model';
 import { DataReadingService } from './data-reading.service';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -13,6 +14,7 @@ export class SensorService {
 
   constructor(private _http:HttpClient, private dataServ:DataReadingService) { }
 
+  //issue get request dependant upon paramaters passed
   private _requestSensors(sensorId:number=null,unitName:string=null){
  	 let _url = 'https://172.103.0.2/red/sensors'
 
@@ -38,20 +40,27 @@ export class SensorService {
   }
   private _fillSensors(sensors:Observable<Sensor[]>){
     //array to be returned of sensors
-    let sensorArray:Array<Sensor>;
+    let finalSensorArray:Sensor[] = [];
 
-    //subscribe to observable to fire get request
-    sensors.subscribe(res =>sensorArray);
 
-    //for each sensor use DataReadingService to issue a get request specific to that sensor
-    //and store the results in the senor.dataReadings array
-    for (var sensor of sensorArray) {
-      this.dataServ.getDataReadings(sensor.dataType,sensor.sensorId).subscribe(res => sensor.dataReadings);
-    }
-    return sensorArray;
+    //For each sensor issue a request using the DataReading service
+    //and store this result to each sensor's DataReadingsArray
+    sensors.subscribe(initialSensorArray =>
+      {
+        for (let sensor of initialSensorArray){
+          this.dataServ.getDataReadings(sensor.dataType,sensor.sensorId).subscribe(
+            dataReadingsReturned => sensor.dataReadings = dataReadingsReturned)
+          console.log(`requested datareadings for ${sensor.unitName} unit sensor ${sensor.sensorId})`);
+          finalSensorArray.push(sensor);
+        }
+
+      })
+
+    return of(finalSensorArray);
+
   }
 
-  public getSensors(){
-    return this._fillSensors(this._requestSensors());
+  public getSensors(sensorId:number=null,unitName:string=null){
+    return this._fillSensors(this._requestSensors(sensorId,unitName));
   }
 }

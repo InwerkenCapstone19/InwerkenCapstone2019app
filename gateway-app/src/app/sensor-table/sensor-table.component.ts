@@ -1,9 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { DataReadingService } from '../data-reading.service';
 import { SensorService } from '../sensor.service';
+
+import { Sensor } from '../sensor.model';
+import { DataReading } from '../data-reading.model';
+
 import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, 
-         MatSortModule, MatTableModule } from '@angular/material';
-import { forkJoin } from 'rxjs';
+         MatSortModule, MatTableModule, MatTableDataSource } from '@angular/material';
+
+import { DataSource } from '@angular/cdk/collections'
+
+import { Observable } from 'rxjs'
+
 
 
 
@@ -13,21 +21,33 @@ import { forkJoin } from 'rxjs';
   styleUrls: ['./sensor-table.component.css']
 })
 export class SensorTableComponent implements OnInit {
+  dataSource:MatTableDataSource<any>;
+  sensorArray:Sensor[];
 
-  constructor(private dataServ: DataReadingService, private sensorServ: SensorService) { }
+  constructor(private sensorServ: SensorService, private cd:ChangeDetectorRef) { }
 
-  tableInfo = {sensors:null,readings:null};
+  dummyArray = [{sensorId:"thisisatest",alias:"AlsoATest",dataReading:["taylor","Nikoli"]}]
+   
 
   ngOnInit() {
-  	this.getTableInfo();
+    this.sensorServ.getSensors().subscribe(sensorArray => {
+      this.dataSource = new MatTableDataSource(sensorArray)
+      console.log(this.dataSource)});
   }
 
-  getTableInfo(){
-  	this.dataServ.getDataReadings("Kanban").subscribe(readings => this.tableInfo.readings = readings);
-  	this.sensorServ.getSensors().subscribe(sensors => this.tableInfo.sensors = sensors);
-    console.log(this.tableInfo);
-  }
 
   //name and order of columns in table
-  displayedColumns: string[] = ['sensID', 'name', 'reading'];
+  displayedColumns=['name', 'alias', 'lastReading'];
 }
+
+
+
+// export class SensorDataSource extends DataSource<any> {
+//   constructor(private sensorServ: SensorService) {
+//     super();
+//   }
+//   connect(): Observable<Sensor[]> {
+//     return this.sensorServ.getSensors();
+//   }
+//   disconnect() {}
+// }

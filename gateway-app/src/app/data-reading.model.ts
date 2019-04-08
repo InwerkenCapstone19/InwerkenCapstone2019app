@@ -1,4 +1,4 @@
-export class DataReading{
+export interface DataReading{
 	id:number;
 	sensorId:number;
 	value:number;

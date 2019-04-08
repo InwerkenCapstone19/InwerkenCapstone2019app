@@ -1,5 +1,5 @@
 import { DataReading } from './data-reading.model'
-export class Sensor {
+export interface Sensor {
 	sensorId:number;
 	dataType:string;
 	unitName:string;
