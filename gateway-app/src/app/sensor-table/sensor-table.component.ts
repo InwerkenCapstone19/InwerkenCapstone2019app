@@ -30,9 +30,14 @@ export class SensorTableComponent implements OnInit {
    
 
   ngOnInit() {
+    this.dataSource = new MatTableDataSource([]);
     this.sensorServ.getSensors().subscribe(sensorArray => {
       this.dataSource = new MatTableDataSource(sensorArray)
-      console.log(this.dataSource)});
+      console.log(this.dataSource.data);
+      console.log(sensorArray);
+    });
+
+
   }
 
 

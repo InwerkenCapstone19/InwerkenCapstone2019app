@@ -3,5 +3,5 @@ export interface Sensor {
 	sensorId:number;
 	dataType:string;
 	unitName:string;
-	dataReadings:DataReading[];
+	lastDataReading:number;
 }

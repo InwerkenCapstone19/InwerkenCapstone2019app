@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Sensor } from './sensor.model';
 import { DataReadingService } from './data-reading.service';
 import { Observable, of } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
+import { mergeMap, map} from 'rxjs/operators';
 
 
 @Injectable({
@@ -45,22 +45,33 @@ export class SensorService {
 
     //For each sensor issue a request using the DataReading service
     //and store this result to each sensor's DataReadingsArray
-    sensors.subscribe(initialSensorArray =>
-      {
-        for (let sensor of initialSensorArray){
-          this.dataServ.getDataReadings(sensor.dataType,sensor.sensorId).subscribe(
-            dataReadingsReturned => sensor.dataReadings = dataReadingsReturned)
-          console.log(`requested datareadings for ${sensor.unitName} unit sensor ${sensor.sensorId})`);
-          finalSensorArray.push(sensor);
-        }
+    // return sensors.pipe( switchMap (initialSensorArray =>
+    //   {
+    //     for (let sensor of initialSensorArray){
+    //       this.dataServ.getDataReadings(sensor.dataType,sensor.sensorId).subscribe(
+    //         dataReadingsReturned => sensor.dataReadings = dataReadingsReturned)
+    //       console.log(`requested datareadings for ${sensor.unitName} unit sensor ${sensor.sensorId})`);
+    //       finalSensorArray.push(sensor);
+    //     }
+    //     return finalSensorArray;
 
-      })
+    //   });
 
-    return of(finalSensorArray);
+    return sensors.pipe(map(sensors => 
+      sensors.map(sensor => {
+        this.dataServ.getDataReadings(sensor.dataType,sensor.sensorId)
+        .subscribe(dataReadingsReturned => sensor.lastDataReading = dataReadingsReturned[0].value) 
+        return sensor}
+    )))
 
-  }
+
+  };
+
+
+  
 
   public getSensors(sensorId:number=null,unitName:string=null){
+    //return this._requestSensors();
     return this._fillSensors(this._requestSensors(sensorId,unitName));
   }
 }
