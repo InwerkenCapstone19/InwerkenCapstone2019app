@@ -14,7 +14,6 @@ import { Observable } from 'rxjs'
 
 
 
-
 @Component({
   selector: 'app-sensor-table',
   templateUrl: './sensor-table.component.html',
@@ -25,8 +24,6 @@ export class SensorTableComponent implements OnInit {
   sensorArray:Sensor[];
 
   constructor(private sensorServ: SensorService, private cd:ChangeDetectorRef) { }
-
-  dummyArray = [{sensorId:"thisisatest",alias:"AlsoATest",dataReading:["taylor","Nikoli"]}]
    
 
   ngOnInit() {
@@ -47,12 +44,5 @@ export class SensorTableComponent implements OnInit {
 
 
 
-// export class SensorDataSource extends DataSource<any> {
-//   constructor(private sensorServ: SensorService) {
-//     super();
-//   }
-//   connect(): Observable<Sensor[]> {
-//     return this.sensorServ.getSensors();
-//   }
-//   disconnect() {}
-// }
+
+
