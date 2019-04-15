@@ -25,8 +25,6 @@ export class SensorTableComponent implements OnInit {
   sensorArray:Sensor[];
 
   constructor(private sensorServ: SensorService, private cd:ChangeDetectorRef) { }
-
-  dummyArray = [{sensorId:"thisisatest",alias:"AlsoATest",dataReading:["taylor","Nikoli"]}]
    
 
   ngOnInit() {
@@ -45,14 +43,3 @@ export class SensorTableComponent implements OnInit {
   displayedColumns=['unitName', 'sensorId', 'dataType', 'lastReading'];
 }
 
-
-
-// export class SensorDataSource extends DataSource<any> {
-//   constructor(private sensorServ: SensorService) {
-//     super();
-//   }
-//   connect(): Observable<Sensor[]> {
-//     return this.sensorServ.getSensors();
-//   }
-//   disconnect() {}
-// }
