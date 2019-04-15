@@ -1,30 +1,25 @@
+<table mat-table [dataSource]="dataSource" class="sensor-table">
 
-<mat-table class="sensor-table">
-  
-    <ng-container matColumnDef="sensID">
-        <div *matHeaderCellDef>#</div>
-        <div *matCellDef="let sensor">{{tableInfo[0].ID}}</div>
+       <ng-container matColumnDef="sensID">
+        <th mat-header-cell *matHeaderCellDef> # </th>
+        <td mat-cell *matCellDef="let tableInfo"> {{tableInfo.sensID|json}} </td>
     </ng-container>
-  
+
     <ng-container matColumnDef="name">
-        <div *matHeaderCellDef>Sensor Name</div>
-        <div class="name-cell"
-                  *matCellDef="let sensor">{{tableInfo[0].name}}</div>
+        <th mat-header-cell *matHeaderCellDef> Name  </th>
+        <td mat-cell *matCellDef="let tableInfo"> {{tableInfo.name|json}} </td>
     </ng-container>
-  
-    <ng-container matColumnDef="reading">
-        <div *matHeaderCellDef>Last Reading</div>
-        <div class="reading-cell"
-                  *matCellDef="let sensor">{{tableInfo[1]}}</div>
-    </ng-container>
-    
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    
- 
-    <mat-row *matRowDef="let row; columns: displayedColumns"
-    	(click)="onRowClicked(row)"></mat-row>
-    
-</mat-table>
 
+    <ng-container matColumnDef="reading">
+        <th mat-header-cell *matHeaderCellDef> Last Reading </th>
+        <td mat-cell *matCellDef="let tableInfo"> {{tableInfo.reading|json}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <!--<mat-row *matRowDef="let row; columns: displayedColumns" (click)="onRowClicked(row)"></mat-row>-->
+</table>
+
+<p>RAW_DATA {{tableInfo|json}}</p>
 <p>SENSORS {{tableInfo.sensors|json}}</p>
 <p>READINGS {{tableInfo.readings|json}}</p>
