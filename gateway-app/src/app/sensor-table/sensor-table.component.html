@@ -16,8 +16,8 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    <!--<mat-row *matRowDef="let row; columns: displayedColumns" (click)="onRowClicked(row)"></mat-row>-->
+    <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="onRowClicked(row)"></tr>
+
 </table>
 
 <p>RAW_DATA {{tableInfo|json}}</p>
