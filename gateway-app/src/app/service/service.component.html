@@ -1,6 +1,44 @@
-<h1>Service Units</h1>
-<ul>
-    <h2>Service</h2>
-    <li>Contact Developer</li>
-    <li>Contact Sensor Manufacturer</li>
-</ul>
+<mat-tab-group animationDuration="0ms">
+	<mat-tab label="Contact Developer">
+		<ng-template matTabContent>
+			<mat-card>
+				<mat-card-title>Radoslaw Grabos</mat-card-title>
+				<mat-card-subtitle>Developer</mat-card-subtitle>
+				<mat-card-content>0511 9362060</mat-card-content>
+				<mat-card-content>rgs@inwerken.de</mat-card-content>
+			</mat-card>
+			<mat-card>
+				<mat-card-title>Leon Möller</mat-card-title>
+				<mat-card-subtitle>Developer</mat-card-subtitle>
+				<mat-card-content>0511 9362060</mat-card-content>
+				<mat-card-content>lmr@inwerken.de</mat-card-content>
+			</mat-card>
+			<app-map 
+			lat=52.4234977
+			long=9.825168
+			label="Inwerken" 
+			windowInformation="Inwerken AG: Ahrensburger Str. 4, 30659 Hannover">
+			</app-map>
+		</ng-template>
+	</mat-tab>
+	<mat-tab label="Contact Sensor Manufacturer">
+		<mat-card>
+			<mat-card-title>Rainer Miethling</mat-card-title>
+			<mat-card-subtitle>Contact Person</mat-card-subtitle>
+			<mat-card-content>0531 24556290</mat-card-content>
+			<mat-card-content>rmiethling@wsntec.com</mat-card-content>
+		</mat-card>
+		<mat-card>
+			<mat-card-title>Friedrich Schwittay</mat-card-title>
+			<mat-card-subtitle>Developer</mat-card-subtitle>
+			<mat-card-content>0531 24556290</mat-card-content>
+			<mat-card-content>fschwittay@wsntec.com</mat-card-content>
+		</mat-card>
+		<app-map 
+			lat=52.2561756
+			long=10.5137196
+			label="WSN" 
+			windowInformation="WSN Technologies AG: Frankfurter Str. 3A, 38122 Braunschweig">
+		</app-map>
+	</mat-tab>
+</mat-tab-group>
