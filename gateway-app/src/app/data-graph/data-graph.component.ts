@@ -21,7 +21,7 @@ export class DataGraphComponent implements OnInit {
   	this.getChartData();
   	console.log(this.chartData);
     //DATE TO USE FOR X AXIS DISPLAY
-    //TODO move this to function
+    //TODO move this to a function
     let d = new Date();
     d.setHours(d.getHours()-264);
     console.log(d.toDateString());
