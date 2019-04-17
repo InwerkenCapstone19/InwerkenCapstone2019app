@@ -14,7 +14,6 @@ import { Observable } from 'rxjs'
 
 
 
-
 @Component({
   selector: 'app-sensor-table',
   templateUrl: './sensor-table.component.html',
