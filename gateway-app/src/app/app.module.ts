@@ -16,7 +16,9 @@ import { SensorTableComponent } from './sensor-table/sensor-table.component';
 
 import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, 
          MatSortModule, MatTableModule } from '@angular/material';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
+import { MatTabsModule } from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
 import { DataGraphComponent } from './data-graph/data-graph.component';
@@ -42,6 +44,7 @@ import { MapComponent } from './map/map.component'
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     MatInputModule,
     MatPaginatorModule,
@@ -50,6 +53,7 @@ import { MapComponent } from './map/map.component'
     MatTableModule,
     HttpClientModule,
     MatCardModule,
+    MatTabsModule,
     AgmCoreModule.forRoot({
       apiKey:"INSERT KEY"
     })
