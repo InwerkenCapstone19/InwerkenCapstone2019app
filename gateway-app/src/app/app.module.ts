@@ -20,6 +20,9 @@ import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
 import { HttpClientModule } from '@angular/common/http';
 import { DataGraphComponent } from './data-graph/data-graph.component';
 
+import { AgmCoreModule } from '@agm/core';
+import { MapComponent } from './map/map.component'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +36,7 @@ import { DataGraphComponent } from './data-graph/data-graph.component';
     SensorTypeSelectorComponent,
     SensorTableComponent,
     DataGraphComponent,
+    MapComponent,
 
   ],
   imports: [
@@ -43,7 +47,10 @@ import { DataGraphComponent } from './data-graph/data-graph.component';
     MatProgressSpinnerModule,
     MatSortModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey:"INSERT KEY"
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
