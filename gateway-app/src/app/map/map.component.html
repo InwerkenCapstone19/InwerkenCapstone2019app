@@ -1,3 +1,5 @@
-<p>
-  map works!
-</p>
+<agm-map [latitude]="lat" [longitude]="lng">
+  <agm-marker [latitude]="lat" [longitude]="lng" [label] = "markerLabel">
+  	<agm-info-window >{{windowInformation}}</agm-info-window>
+  </agm-marker>
+</agm-map>
