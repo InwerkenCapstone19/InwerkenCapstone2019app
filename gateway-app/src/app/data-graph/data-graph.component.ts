@@ -12,7 +12,7 @@ export class DataGraphComponent implements OnInit {
   @ViewChild('lineChart') private lineChartRef:ElementRef;
 
   chart:any;
-  chartData = [{x:null,y:null}]
+  chartData = [];
   
   constructor(private data:DataReadingService ) { }
 
@@ -39,14 +39,26 @@ export class DataGraphComponent implements OnInit {
       },
       scales: {
         xAxes: [{
-          display: true
+          display: true,
+          type: 'time',
+          distribution: 'linear',
+          bounds: 'data',
+          ticks: {
+          	suggestedMin: '2019/04/01',
+          },
+          time: {
+          	min:'2019/04/01',
+          }
         }],
         yAxes: [{
-          display: true
+          display: true,
+          distribution: 'linear',
+          bounds: 'data',
         }],
       }
     }
   });
+  //this.chart.update();
   }
 
   //calls dataReadingService instance and assigns that
