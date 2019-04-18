@@ -14,7 +14,6 @@ import { Observable } from 'rxjs'
 
 
 
-
 @Component({
   selector: 'app-sensor-table',
   templateUrl: './sensor-table.component.html',
@@ -42,4 +41,10 @@ export class SensorTableComponent implements OnInit {
   //name and order of columns in table
   displayedColumns=['unitName', 'sensorId', 'dataType', 'lastReading'];
 }
+
+
+
+
+
+
 
