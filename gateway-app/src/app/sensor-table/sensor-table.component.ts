@@ -42,3 +42,9 @@ export class SensorTableComponent implements OnInit {
   displayedColumns=['unitName', 'sensorId', 'dataType', 'lastReading'];
 }
 
+
+
+
+
+
+

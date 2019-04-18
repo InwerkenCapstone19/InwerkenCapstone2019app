@@ -16,9 +16,15 @@ import { SensorTableComponent } from './sensor-table/sensor-table.component';
 
 import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, 
          MatSortModule, MatTableModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { MatTabsModule } from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
 import { DataGraphComponent } from './data-graph/data-graph.component';
+
+import { AgmCoreModule } from '@agm/core';
+import { MapComponent } from './map/map.component'
 
 @NgModule({
   declarations: [
@@ -33,17 +39,24 @@ import { DataGraphComponent } from './data-graph/data-graph.component';
     SensorTypeSelectorComponent,
     SensorTableComponent,
     DataGraphComponent,
+    MapComponent,
 
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     MatInputModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatSortModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatTabsModule,
+    AgmCoreModule.forRoot({
+      apiKey:"INSERT KEY"
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
