@@ -1,5 +1,5 @@
 <div>
-  <mat-table [dataSource]="dataSource">
+  <mat-table [dataSource]="tableDataSource">
     <ng-container matColumnDef="unitName">
       <mat-header-cell *matHeaderCellDef> Unit Name </mat-header-cell>
       <mat-cell *matCellDef="let sensor"> {{sensor.unitName}} </mat-cell>

@@ -1,9 +1,7 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { DataReadingService } from '../data-reading.service';
-import { SensorService } from '../sensor.service';
+import { Component, OnInit} from '@angular/core';
+import { AnalyticsDataService } from '../analytics-data.service';
 
 import { Sensor } from '../sensor.model';
-import { DataReading } from '../data-reading.model';
 
 import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, 
          MatSortModule, MatTableModule, MatTableDataSource } from '@angular/material';
@@ -20,17 +18,17 @@ import { Observable } from 'rxjs'
   styleUrls: ['./sensor-table.component.css']
 })
 export class SensorTableComponent implements OnInit {
-  dataSource:MatTableDataSource<any>;
+  tableDataSource:MatTableDataSource<any>;
   sensorArray:Sensor[];
 
-  constructor(private sensorServ: SensorService, private cd:ChangeDetectorRef) { }
+  constructor(private data: AnalyticsDataService) { }
    
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource([]);
-    this.sensorServ.getSensors().subscribe(sensorArray => {
-      this.dataSource = new MatTableDataSource(sensorArray)
-      console.log(this.dataSource.data);
+    this.tableDataSource = new MatTableDataSource();
+    this.data.sensorData.subscribe(sensorArray => {
+      this.tableDataSource.data = sensorArray;
+      console.log(this.tableDataSource.data);
       console.log(sensorArray);
     });
 
