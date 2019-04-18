@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import { Chart } from 'chart.js';
 
-import { DataReadingService } from '../data-reading.service';
+import { AnalyticsDataService } from '../analytics-data.service';
 
 @Component({
   selector: 'app-data-graph',
@@ -15,7 +15,7 @@ export class DataGraphComponent implements OnInit {
   chartData = [];
   dateForGraph = new Date();
   
-  constructor(private data:DataReadingService ) { }
+  constructor(private data:AnalyticsDataService ) { }
 
   ngOnInit() {
   	this.getChartData();
@@ -69,7 +69,10 @@ export class DataGraphComponent implements OnInit {
 
   //calls dataReadingService instance and assigns that
   getChartData(sensorType:string="Kanban",sensorId:number=null){
-  	this.data.getDataReadings(sensorType,sensorId).subscribe(res => 
+    //next line may be neccessary
+    //this.data.updateDataReadings(sensorType,sensorId);
+
+  	this.data.dataReadingsData.subscribe(res => 
   		{	//for each value in the array returned by the data service
   			for(let singleReading of res){
   				//add it's date and value to chartData
