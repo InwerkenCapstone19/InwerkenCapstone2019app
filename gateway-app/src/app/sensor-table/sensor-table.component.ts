@@ -39,10 +39,6 @@ export class SensorTableComponent implements OnInit {
 
 
   //name and order of columns in table
-  displayedColumns=['name', 'alias', 'lastReading'];
+  displayedColumns=['unitName', 'sensorId', 'dataType', 'lastReading'];
 }
-
-
-
-
 

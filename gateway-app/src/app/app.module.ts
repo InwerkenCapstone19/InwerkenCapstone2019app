@@ -18,6 +18,7 @@ import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
          MatSortModule, MatTableModule } from '@angular/material';
 
 import { HttpClientModule } from '@angular/common/http';
+import { DataGraphComponent } from './data-graph/data-graph.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
     NavBarComponent,
     SensorTypeSelectorComponent,
     SensorTableComponent,
+    DataGraphComponent,
 
   ],
   imports: [
