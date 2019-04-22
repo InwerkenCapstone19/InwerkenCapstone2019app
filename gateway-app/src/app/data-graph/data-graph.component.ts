@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import { Chart } from 'chart.js';
-
+import { map } from 'rxjs/operators';
 import { AnalyticsDataService } from '../analytics-data.service';
 
 @Component({
@@ -18,16 +18,15 @@ export class DataGraphComponent implements OnInit {
   constructor(private data:AnalyticsDataService ) { }
 
   ngOnInit() {
-  	this.getChartData();
-  	console.log(this.chartData);
+  	
     //DATE TO USE FOR X AXIS DISPLAY
     //TODO move this to a function
     let d = new Date();
-    d.setHours(d.getHours()-264);
+    d.setHours(d.getHours()-4);
     console.log(d.toDateString());
 
   	  //implementation of chart.js
-  this.chart = new Chart(this.lineChartRef.nativeElement, {
+    this.chart = new Chart(this.lineChartRef.nativeElement, {
     type: 'line',
     data: {
       labels: ["Time","Value"], // your labels array
@@ -63,8 +62,10 @@ export class DataGraphComponent implements OnInit {
         }],
       }
     }
-  });
-  this.chart.update();
+    });
+    this.getChartData();
+    console.log(this.chartData);
+    //this.chart.update();
   }
 
   //calls dataReadingService instance and assigns that
@@ -73,11 +74,11 @@ export class DataGraphComponent implements OnInit {
     //this.data.updateDataReadings(sensorType,sensorId);
 
   	this.data.dataReadingsData.subscribe(res => 
-  		{	//for each value in the array returned by the data service
-  			for(let singleReading of res){
-  				//add it's date and value to chartData
-  				this.chartData.push({x:singleReading.dateTime, y:singleReading.value});
-  			}
+  		{	
+        this.chartData.length=0;
+        res.map((elem,i,res )=> {this.chartData.push({'x':elem.dateTime,'y':elem.value})})
+        this.chart.update();
+        console.log("Got new chart data")
   		}
   	);
   }
