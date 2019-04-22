@@ -22,8 +22,9 @@ export class AnalyticsDataService {
   dataReadingsData = this._dataReadingSource.asObservable();
  
 
-  updateSensors(sensorId:number=null,unitName:string=null) {
-    this.sensors.getSensors(sensorId,unitName).subscribe(res => this._sensorSource.next(res))
+  updateSensors(sensorId:number=null,unitName:string=null,dataType:string=null) {
+    this.sensors.getSensors(sensorId,unitName,dataType).subscribe(res => this._sensorSource.next(res));
+    console.log(`Pulled new sensors with id:${sensorId} unitName:${unitName} dataType:${dataType}`);
   }
   updateDataReadings(sensorType:string="Kanban",sensorId:number=null) {
     this.dataReadings.getDataReadings(sensorType,sensorId).subscribe(res => this._dataReadingSource.next(res))
