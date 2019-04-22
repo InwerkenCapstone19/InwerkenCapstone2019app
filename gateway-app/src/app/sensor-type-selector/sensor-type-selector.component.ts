@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AnalyticsDataService} from '../analytics-data.service';
 
 @Component({
   selector: 'app-sensor-type-selector',
@@ -7,18 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SensorTypeSelectorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private data:AnalyticsDataService) { }
 
   ngOnInit() {
   }
 
   getKanban() :void{
-
+    this.data.updateSensors(null,null,"Kanban");
   }
   getHumidity() :void{
-  	
+  	this.data.updateSensors(null,null,"Humidity");
   }
   getTemperature() :void{
-  	
+  	this.data.updateSensors(null,null,"Temperature");
   }   
 }
