@@ -12,7 +12,7 @@ export class DataReadingService {
 
   public getDataReadings(sensorType:string,sensorId:number=null){
     //base url, which has sensor type included
-  	let _url = 'https://172.103.0.2/red/dataReadings?type='+sensorType;
+  	let _url = 'https://172.103.0.2/red/dataReadings?dataType='+sensorType;
   	
     //if no id is passed, get all readings, otherwise get readings from certain id
   	if(sensorId!==null){
