@@ -15,11 +15,15 @@ export class SensorTypeSelectorComponent implements OnInit {
 
   getKanban() :void{
     this.data.updateSensors(null,null,"Kanban");
+    this.data.updateDataReadings("Kanban",null);
   }
   getHumidity() :void{
   	this.data.updateSensors(null,null,"Humidity");
+    this.data.updateDataReadings("Humidity",null);
+
   }
   getTemperature() :void{
   	this.data.updateSensors(null,null,"Temperature");
+    this.data.updateDataReadings("Temperature",null);
   }   
 }
