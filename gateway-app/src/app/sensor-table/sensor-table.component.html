@@ -2,19 +2,19 @@
   <mat-table [dataSource]="tableDataSource">
     <ng-container matColumnDef="unitName">
       <mat-header-cell *matHeaderCellDef> Unit Name </mat-header-cell>
-      <mat-cell *matCellDef="let sensor"> {{sensor.unitName}} </mat-cell>
+      <mat-cell *matCellDef="let sensor"> {{sensor?.unitName}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="sensorId">
       <mat-header-cell *matHeaderCellDef> Sensor ID </mat-header-cell>
-      <mat-cell *matCellDef="let sensor"> {{sensor.sensorId}} </mat-cell>
+      <mat-cell *matCellDef="let sensor"> {{sensor?.sensorId}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="dataType">
       <mat-header-cell *matHeaderCellDef> Data Type </mat-header-cell>
-      <mat-cell *matCellDef="let sensor"> {{sensor.dataType}} </mat-cell>
+      <mat-cell *matCellDef="let sensor"> {{sensor?.dataType}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="lastReading">
       <mat-header-cell *matHeaderCellDef> Last Reading </mat-header-cell>
-      <mat-cell *matCellDef="let sensor"> {{sensor.lastDataReading}} </mat-cell>
+      <mat-cell *matCellDef="let sensor"> {{sensor?.lastDataReading}} </mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

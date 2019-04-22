@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, OnChanges} from '@angular/core';
 import { AnalyticsDataService } from '../analytics-data.service';
 
 import { Sensor } from '../sensor.model';
@@ -17,21 +17,19 @@ import { Observable } from 'rxjs'
   templateUrl: './sensor-table.component.html',
   styleUrls: ['./sensor-table.component.css']
 })
-export class SensorTableComponent implements OnInit {
+export class SensorTableComponent implements OnInit{
   tableDataSource:MatTableDataSource<any>;
   sensorArray:Sensor[];
 
-  constructor(private data: AnalyticsDataService) { }
+  constructor(private data: AnalyticsDataService) { 
+  this.tableDataSource = new MatTableDataSource<Sensor[]>();
+
+
+  }
    
 
   ngOnInit() {
-    this.tableDataSource = new MatTableDataSource();
-    this.data.sensorData.subscribe(sensorArray => {
-      this.tableDataSource.data = sensorArray;
-      console.log(this.tableDataSource.data);
-      console.log(sensorArray);
-    });
-
+    this.data.sensorData.subscribe(res => this.tableDataSource.data = res);
 
   }
 
