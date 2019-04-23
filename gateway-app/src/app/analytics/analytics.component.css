@@ -1,0 +1,10 @@
+.inline{
+	display: inline-block;
+	width:20%;
+}
+.inline.table{
+	width: 50%;
+}
+.graph{
+	width: 80%;
+}
