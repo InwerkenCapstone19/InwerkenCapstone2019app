@@ -1,25 +1,26 @@
 <h1>Home</h1>
-<h3>Applacation Contents</h3>
-<ul>
-    <h2>Analytics</h2>
-    <li>Show Sensor Data</li>
-    <li>Show Assignment</li>
-</ul>
-<ul>
-    <h2>Discover</h2>
-    <li>Add New Sensor</li>
-</ul>
-<ul>
-    <h2>Assignment</h2>
-    <li>Assign Sensor</li>
-    <li>Add Shelves</li>
-</ul>
-<ul>
-    <h2>Service</h2>
-    <li>Contact Developer</li>
-    <li>Contact Sensor Manufacturer</li>
-</ul>
-<ul>
-    <h2>Settings</h2>
-    <li>Change User Settings</li>
-</ul>
+<mat-card routerLink="/analytics">
+    <mat-card-title>Analytics</mat-card-title>
+    <mat-card-subtitle>Info About Sensors</mat-card-subtitle>
+    <mat-card-content>View list of all sensors</mat-card-content>
+    <mat-card-content>View graph of sensor data</mat-card-content>
+
+</mat-card>
+<mat-card routerLink="/discover">
+    <mat-card-title>Discover</mat-card-title>
+    <mat-card-subtitle>Connect new sensors to the App</mat-card-subtitle>
+    <mat-card-content>Search for new sensors</mat-card-content>
+    <mat-card-content>Add new sensors</mat-card-content>
+</mat-card>
+<mat-card routerLink="/assignment">
+    <mat-card-title>Assignment</mat-card-title>
+    <mat-card-subtitle>Set up how your sensors are structured</mat-card-subtitle>
+    <mat-card-content>Add Assets</mat-card-content>
+    <mat-card-content>Assign Sensors to assets</mat-card-content>
+</mat-card>
+<mat-card routerLink="/service">
+    <mat-card-title>Service</mat-card-title>
+    <mat-card-subtitle>Contact devolpers for help</mat-card-subtitle>
+    <mat-card-content>Contact Inwerker</mat-card-content>
+    <mat-card-content>Contact WSN</mat-card-content>
+</mat-card>

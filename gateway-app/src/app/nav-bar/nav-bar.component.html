@@ -1,8 +1,46 @@
-<div class="btn-group">
+<!-- <div class="btn-group">
   <button routerLink="/home">Home</button>
   <button routerLink="/analytics">Analytics</button>
   <button routerLink="/discover">Discover</button>
   <button routerLink="/assignment">Assignment</button>
   <button routerLink="/service">Service</button>
   <button routerLink="/settings">Settings</button>
-</div>
+</div> -->
+<nav mat-tab-nav-bar mat-align-tabs="center">
+  <a mat-tab-link
+     routerLink="/home"
+     routerLinkActive #rla1="routerLinkActive"
+     [active]="rla1.isActive">
+    Home
+  </a>
+  <a mat-tab-link
+     routerLink="/analytics"
+     routerLinkActive #rla2="routerLinkActive"
+     [active]="rla2.isActive">
+    Analytics
+  </a>
+  <a mat-tab-link
+     routerLink="/discover"
+     routerLinkActive #rla3="routerLinkActive"
+     [active]="rla3.isActive">
+    Discover
+  </a>
+  <a mat-tab-link
+     routerLink="/assignment"
+     routerLinkActive #rla4="routerLinkActive"
+     [active]="rla4.isActive">
+    Assignment
+  </a>
+  <a mat-tab-link
+     routerLink="/service"
+     routerLinkActive #rla5="routerLinkActive"
+     [active]="rla5.isActive">
+    Service
+  </a>
+  <a mat-tab-link
+     routerLink="/settings"
+     routerLinkActive #rla6="routerLinkActive"
+     [active]="rla6.isActive">
+    Settings
+  </a>
+</nav>
