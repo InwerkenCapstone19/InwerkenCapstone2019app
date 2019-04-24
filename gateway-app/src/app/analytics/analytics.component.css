@@ -4,6 +4,7 @@
 }
 .inline.table{
 	width: 50%;
+	vertical-align: top;
 }
 .graph{
 	width: 80%;
