@@ -15,17 +15,22 @@ import { SensorTypeSelectorComponent } from './sensor-type-selector/sensor-type-
 import { SensorTableComponent } from './sensor-table/sensor-table.component';
 
 import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, 
-         MatSortModule, MatTableModule } from '@angular/material';
+         MatSortModule, MatTableModule, MatStepperModule, MatOptionModule, MatSelectModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
 import { DataGraphComponent } from './data-graph/data-graph.component';
 
 import { AgmCoreModule } from '@agm/core';
-import { MapComponent } from './map/map.component'
+import { MapComponent } from './map/map.component';
+import { AssignmentStepperComponent } from './assignment-stepper/assignment-stepper.component';
+import { AssetDisplayComponent } from './asset-display/asset-display.component';
+import { AssignSensorComponent } from './assign-sensor/assign-sensor.component'
 
 @NgModule({
   declarations: [
@@ -41,6 +46,9 @@ import { MapComponent } from './map/map.component'
     SensorTableComponent,
     DataGraphComponent,
     MapComponent,
+    AssignmentStepperComponent,
+    AssetDisplayComponent,
+    AssignSensorComponent,
 
   ],
   imports: [
@@ -52,10 +60,16 @@ import { MapComponent } from './map/map.component'
     MatProgressSpinnerModule,
     MatSortModule,
     MatTableModule,
+    MatStepperModule,
     HttpClientModule,
     MatCardModule,
     MatTabsModule,
     MatButtonModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatExpansionModule,
+    FormsModule,
+    ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey:"INSERT KEY"
     })

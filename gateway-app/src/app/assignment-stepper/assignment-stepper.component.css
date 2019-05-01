@@ -1,0 +1,12 @@
+.mat-icon.material-icons.ng-star-inserted {
+  color: green;
+  position: relative;
+  left: -15px;
+  &::before {
+    content: 'check';
+    color: #fff;
+    position: relative;
+    left: 15px;
+    font-weight: bold;
+  }
+}

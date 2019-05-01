@@ -1,0 +1,35 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+<form [formGroup]="formGroup" ngSumbit="submit()">
+  <mat-vertical-stepper formArrayName="formArray" [linear]="true" #stepper>
+    <mat-step completed="false" formGroupName="0" [stepControl]="formArray?.get([0])">
+      <ng-template matStepLabel>Asset Name</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Asset Name" formControlName="assetName" required>
+      </mat-form-field>
+      <br>
+      <button mat-stroked-button matStepperNext (click)="nextClicked($event)">Next</button>
+    </mat-step>
+    <mat-step completed="false" formGroupName="1" [stepControl]="formArray?.get([1])">
+      <ng-template matStepLabel>Parent Asset</ng-template>
+      <mat-form-field>
+      	<mat-select placeholder="Asset" name="asset" formControlName="assetParent">
+          	<mat-option *ngFor="let asset of assets" [value]="asset?.assetId">
+              	{{asset?.name}}
+          	</mat-option>
+      	</mat-select>
+		  </mat-form-field>
+      <br>
+      <button mat-stroked-button matStepperNext (click)="nextClicked($event)">Next</button>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Confirm creation</ng-template>
+      <p>Are you ready to create this Asset?</p>
+      <br>
+      <div>
+        <button mat-stroked-button (click)="submit()">Done</button>
+        <button mat-stroked-button (click)="reset()">Reset</button>
+      </div>
+    </mat-step>
+    ...
+  </mat-vertical-stepper>
+</form>
