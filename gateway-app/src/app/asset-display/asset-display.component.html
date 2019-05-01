@@ -1,0 +1,35 @@
+<mat-accordion>
+	<mat-expansion-panel *ngFor="let asset of topLevelAssets">
+		<mat-expansion-panel-header>
+			<mat-panel-title>
+				{{asset.name}}
+			</mat-panel-title>
+		</mat-expansion-panel-header>
+
+		<mat-expansion-panel *ngFor="let childAsset of getChildren(asset,assets)">
+			<mat-expansion-panel-header>
+				<mat-panel-title>
+					{{childAsset.name}}
+				</mat-panel-title>
+			</mat-expansion-panel-header>
+			
+			<mat-expansion-panel *ngFor="let grandchildAsset of getChildren(childAsset,assets)">
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						{{grandchildAsset.name}}
+					</mat-panel-title>
+				</mat-expansion-panel-header>
+				
+				<p *ngFor="let sensor of grandchildAsset.sensors">    Unit:{{sensor?.unitName}}</p>
+				<!--THIS IS WHERE THE TABLE GOES -->
+			</mat-expansion-panel>
+			<p *ngFor="let sensor of childAsset.sensors">    Unit:{{sensor?.unitName}}</p>
+			<!--THIS IS WHERE THE TABLE GOES -->
+		</mat-expansion-panel>
+		<p *ngFor="let sensor of asset.sensors">    Unit:{{sensor?.unitName}}</p>
+		<!--THIS IS WHERE THE TABLE GOES -->
+	</mat-expansion-panel>
+</mat-accordion>
+
+
+

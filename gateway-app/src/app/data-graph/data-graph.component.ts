@@ -22,8 +22,8 @@ export class DataGraphComponent implements OnInit {
     //DATE TO USE FOR X AXIS DISPLAY
     //TODO move this to a function
     let d = new Date();
-    d.setHours(d.getHours()-4);
-    console.log(d.toDateString());
+    d.setHours(d.getHours()+4);
+    console.log(d.toString());
 
   	  //implementation of chart.js
     this.chart = new Chart(this.lineChartRef.nativeElement, {
@@ -52,7 +52,7 @@ export class DataGraphComponent implements OnInit {
           	suggestedMin: '2019/04/01',
           },
           time: {
-          	min:d.toDateString(),
+          	min:d.toString(),
           }
         }],
         yAxes: [{
@@ -70,8 +70,6 @@ export class DataGraphComponent implements OnInit {
 
   //calls dataReadingService instance and assigns that
   getChartData(sensorType:string="Kanban",sensorId:number=null){
-    //next line may be neccessary
-    //this.data.updateDataReadings(sensorType,sensorId);
 
   	this.data.dataReadingsData.subscribe(res => 
   		{	

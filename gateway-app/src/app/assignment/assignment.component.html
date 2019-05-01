@@ -1,6 +1,17 @@
-<h1>Assignment</h1>
-<ul>
-    <h2>Assignment</h2>
-    <li>Assign Sensor</li>
-    <li>Add Shelves</li>
-</ul>
+<mat-tab-group >
+	<mat-tab label="Add Asset">
+		<ng-template matTabContent>
+			<app-assignment-stepper></app-assignment-stepper>
+		</ng-template>
+	</mat-tab>
+	<mat-tab label="Assign Sensor to Asset">
+		<ng-template matTabContent>
+			<app-assign-sensor></app-assign-sensor>
+		</ng-template>
+	</mat-tab>
+	<mat-tab label ="Show Assets and Their Sensors">
+		<ng-template matTabContent>
+			<app-asset-display></app-asset-display>
+		</ng-template>
+	</mat-tab>
+</mat-tab-group>

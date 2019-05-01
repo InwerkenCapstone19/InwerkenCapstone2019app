@@ -1,0 +1,39 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+<form [formGroup]="formGroup" ngSumbit="submit()">
+  <mat-vertical-stepper formArrayName="formArray" [linear]="true" #stepper>
+    <mat-step completed="false" formGroupName="0" [stepControl]="formArray?.get([0])">
+      <ng-template matStepLabel>Select Sensor</ng-template>
+      <mat-form-field>
+        <mat-select placeholder="Sensor" name="sensor" formControlName="sensorName">
+            <mat-option *ngFor="let sensor of sensors" [value]="sensor?.unitName">
+                {{sensor?.unitName}}
+            </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <button mat-stroked-button matStepperNext (click)="nextClicked($event)">Next</button>
+    </mat-step>
+    <mat-step completed="false" formGroupName="1" [stepControl]="formArray?.get([1])">
+      <ng-template matStepLabel>Select Asset</ng-template>
+      <mat-form-field>
+      	<mat-select placeholder="Asset" name="asset" formControlName="assetName">
+          	<mat-option *ngFor="let asset of assets" [value]="asset?.assetId">
+              	{{asset?.name}}
+          	</mat-option>
+      	</mat-select>
+		  </mat-form-field>
+      <br>
+      <button mat-stroked-button matStepperNext (click)="nextClicked($event)">Next</button>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Confirm creation</ng-template>
+      <p>Place this sensor in this asset?</p>
+      <br>
+      <div>
+        <button mat-stroked-button (click)="submit()">Done</button>
+        <button mat-stroked-button (click)="reset()">Reset</button>
+      </div>
+    </mat-step>
+    ...
+  </mat-vertical-stepper>
+</form>
